@@ -1,19 +1,92 @@
-// MARPR7.cpp : Este archivo contiene la función "main". La ejecución del programa comienza y termina ahí.
-//
+
+/*@ <authors>
+ *
+ * Nombre, apellidos y usuario del juez (MARPXX) de los autores de la solución.
+ *
+ *@ </authors> */
+
+ /*@ <authors>
+  *
+  * Nombre, apellidos y usuario del juez (MARPXX) de los autores de la solución.
+  *
+  *@ </authors> */
+
 
 #include <iostream>
+#include <fstream>
+#include<vector>
+#include<queue>
+#include"Matriz.h"
+using namespace std;
+/*@ <answer>
 
-int main()
+ Escribe aquí un comentario general sobre la solución, explicando cómo
+ se resuelve el problema y cuál es el coste de la solución, en función
+ del tamaño del problema.
+ El coste es de O(n*m) siendo n el numero de filas y m el numero de columnas
+ @ </answer> */
+
+
+ // ================================================================
+ // Escribe el código completo de tu solución aquí debajo
+ // ================================================================
+ //@ <answer>
+long long int rec(Matriz<int>& C, int i, int j, vector<vector<int>> tab)
 {
-    std::cout << "Hello World!\n";
+    if (i >=tab.size() || j >= tab[0].size())
+        return 0;
+    if (C[i][j] != -1)
+        return C[i][j];
+    if (i== tab.size()-1&&j== tab[0].size()-1)
+    {
+        return 1;
+    }
+    else
+    {
+        C[i][j] = rec(C, i+tab[i][j], j, tab) + rec(C, i, j+tab[i][j], tab);
+    }
+    return C[i][j];
+}
+bool resuelveCaso() {
+
+    // leer los datos de la entrada
+    int n, m;
+    cin>>n>>m;
+    if (!std::cin)  // fin de la entrada
+        return false;
+    vector<vector<int>>tab(n,vector<int>(m,0));
+
+    for (int i = 0; i < n; i++)
+    {
+        for (int j = 0; j < m; j++)
+        {
+            cin >> tab[i][j];
+        }
+    }
+    Matriz<int>C(n + 1, m + 1, -1);
+    cout << rec(C, 0, 0, tab) << endl;
+    // resolver el caso posiblemente llamando a otras funciones
+
+    // escribir la solución
+
+    return true;
 }
 
-// Ejecutar programa: Ctrl + F5 o menú Depurar > Iniciar sin depurar
-// Depurar programa: F5 o menú Depurar > Iniciar depuración
+//@ </answer>
+//  Lo que se escriba dejado de esta línea ya no forma parte de la solución.
 
-// Sugerencias para primeros pasos: 1. Use la ventana del Explorador de soluciones para agregar y administrar archivos
-//   2. Use la ventana de Team Explorer para conectar con el control de código fuente
-//   3. Use la ventana de salida para ver la salida de compilación y otros mensajes
-//   4. Use la ventana Lista de errores para ver los errores
-//   5. Vaya a Proyecto > Agregar nuevo elemento para crear nuevos archivos de código, o a Proyecto > Agregar elemento existente para agregar archivos de código existentes al proyecto
-//   6. En el futuro, para volver a abrir este proyecto, vaya a Archivo > Abrir > Proyecto y seleccione el archivo .sln
+int main() {
+    // ajustes para que cin extraiga directamente de un fichero
+#ifndef DOMJUDGE
+    std::ifstream in("casos.txt");
+    auto cinbuf = std::cin.rdbuf(in.rdbuf());
+#endif
+
+    while (resuelveCaso());
+
+    // para dejar todo como estaba al principio
+#ifndef DOMJUDGE
+    std::cin.rdbuf(cinbuf);
+#endif
+    return 0;
+}
