@@ -1,0 +1,86 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\jiale\\source\\repos\\MARP3-2\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{376808B5-A23A-499C-B753-3F3B0D64C221}|MARP3-2\\MARP3-2.vcxproj|C:\\Users\\jiale\\source\\repos\\MARP3-2\\MARP3-2\\MARP3-2.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{376808B5-A23A-499C-B753-3F3B0D64C221}|MARP3-2\\MARP3-2.vcxproj|solutionrelative:MARP3-2\\MARP3-2.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\jiale\\source\\repos\\MARP3-2\\MARP3-2\\casos.txt||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:MARP3-2\\casos.txt||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\jiale\\Documents\\MARP\\MARP3-3.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\jiale\\Downloads\\Plantillas para el juez-20250619\\3.CasosIlimitados.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 3,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "MARP3-3.cpp",
+              "DocumentMoniker": "C:\\Users\\jiale\\Documents\\MARP\\MARP3-3.cpp",
+              "RelativeDocumentMoniker": "..\\..\\..\\Documents\\MARP\\MARP3-3.cpp",
+              "ToolTip": "C:\\Users\\jiale\\Documents\\MARP\\MARP3-3.cpp",
+              "RelativeToolTip": "..\\..\\..\\Documents\\MARP\\MARP3-3.cpp",
+              "ViewState": "AgIAABsAAAAAAAAAAAAAACkAAAAnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-09-25T09:21:56.908Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "casos.txt",
+              "DocumentMoniker": "C:\\Users\\jiale\\source\\repos\\MARP3-2\\MARP3-2\\casos.txt",
+              "RelativeDocumentMoniker": "MARP3-2\\casos.txt",
+              "ToolTip": "C:\\Users\\jiale\\source\\repos\\MARP3-2\\MARP3-2\\casos.txt",
+              "RelativeToolTip": "MARP3-2\\casos.txt",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
+              "WhenOpened": "2025-09-25T09:15:48.073Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "3.CasosIlimitados.cpp",
+              "DocumentMoniker": "C:\\Users\\jiale\\Downloads\\Plantillas para el juez-20250619\\3.CasosIlimitados.cpp",
+              "RelativeDocumentMoniker": "..\\..\\..\\Downloads\\Plantillas para el juez-20250619\\3.CasosIlimitados.cpp",
+              "ToolTip": "C:\\Users\\jiale\\Downloads\\Plantillas para el juez-20250619\\3.CasosIlimitados.cpp",
+              "RelativeToolTip": "..\\..\\..\\Downloads\\Plantillas para el juez-20250619\\3.CasosIlimitados.cpp",
+              "ViewState": "AgIAACkAAAAAAAAAAAAwwDwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-09-25T09:13:55.603Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "MARP3-2.cpp",
+              "DocumentMoniker": "C:\\Users\\jiale\\source\\repos\\MARP3-2\\MARP3-2\\MARP3-2.cpp",
+              "RelativeDocumentMoniker": "MARP3-2\\MARP3-2.cpp",
+              "ToolTip": "C:\\Users\\jiale\\source\\repos\\MARP3-2\\MARP3-2\\MARP3-2.cpp",
+              "RelativeToolTip": "MARP3-2\\MARP3-2.cpp",
+              "ViewState": "AgIAABAAAAAAAAAAAAAwwCEAAAA5AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-09-25T08:58:23.12Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

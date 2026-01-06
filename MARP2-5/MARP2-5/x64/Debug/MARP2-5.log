@@ -1,0 +1,25 @@
+﻿  MARP2-5.cpp
+C:\Users\jiale\source\repos\MARP2-5\MARP2-5\PriorityQueue.h(49,27): warning C4267: 'argumento': conversión de 'size_t' a 'int'; posible pérdida de datos
+  (compilando archivo de origen "MARP2-5.cpp")
+      C:\Users\jiale\source\repos\MARP2-5\MARP2-5\PriorityQueue.h(49,27):
+      el contexto de creación de instancias de la plantilla (el más antiguo primero) es
+          C:\Users\jiale\source\repos\MARP2-5\MARP2-5\MARP2-5.cpp(42,40):
+          Vea la referencia a la creación de una instancia de clase plantilla "PriorityQueue<std::pair<long,int>,std::less<T>>" que se está compilando
+          with
+          [
+              T=std::pair<long,int>
+          ]
+          C:\Users\jiale\source\repos\MARP2-5\MARP2-5\PriorityQueue.h(47,9):
+          al compilar la función del miembro clase plantilla "void PriorityQueue<std::pair<long,int>,std::less<T>>::push(const T &)"
+          with
+          [
+              T=std::pair<long,int>
+          ]
+              C:\Users\jiale\source\repos\MARP2-5\MARP2-5\MARP2-5.cpp(58,19):
+              vea la primera referencia a “PriorityQueue<std::pair<long,int>,std::less<T>>::push” en “resuelveCaso”
+          with
+          [
+              T=std::pair<long,int>
+          ]
+  
+  MARP2-5.vcxproj -> C:\Users\jiale\source\repos\MARP2-5\x64\Debug\MARP2-5.exe
