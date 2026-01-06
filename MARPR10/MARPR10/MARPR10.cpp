@@ -7,11 +7,8 @@
 
 #include <iostream>
 #include <fstream>
-#include <vector>
-#include<algorithm>
-#include<queue>
+#include <queue>
 using namespace std;
- // propios o los de las estructuras de datos de clase
 
 /*@ <answer>
 
@@ -19,7 +16,8 @@ using namespace std;
  se resuelve el problema y cuál es el coste de la solución, en función
  del tamaño del problema.
 
- El coste en tiempo es de O(NLogN) ya que hacemos un bucle en donde en el peor caso vamos haciendo push de la cola de prioridad cada bucle y en espacio de O(N)
+
+ coste en tiempo: 2*O(N log N) porque primero se insertan todos los numeros a la priority queue y luego en un while hacemos el resto de operaciones. Espacio O(N)
  @ </answer> */
 
 
@@ -35,32 +33,33 @@ bool resuelveCaso() {
     cin >> N;
     if (N==0)
         return false;
-    int ini, fin;
-    // resolver el caso posiblemente llamando a otras funciones
-    vector<pair<int, int>> horas;
+
+    priority_queue< long long int, vector<long long int>, greater<long long int >> ult;
+
+    long long int n;
     for (int i = 0; i < N; i++)
     {
-        cin >> ini >> fin;
-        horas.push_back({ ini,fin });
+        cin >> n;
+        ult.push(n);
     }
-    sort(horas.begin(), horas.end());
-    priority_queue<int, vector<int>, greater<int>> ult;
-    ult.push(horas[0].second);
-    int comp = 0;
-    for (int i = 1; i < N; i++)
+
+    long long int total = 0;
+    long long int a,b;
+    while (!ult.empty())
     {
-        if (ult.top() <= horas[i].first)
+        a = ult.top();
+        ult.pop();
+        if (!ult.empty())
         {
+            b = ult.top();
             ult.pop();
-            ult.push(horas[i].second);
-        }
-        else
-        {
-            comp++;
-            ult.push(horas[i].second);
+            total += (a + b);
+            ult.push(a + b);
         }
     }
-    cout << comp << endl;
+    cout << total << '\n';
+    // resolver el caso posiblemente llamando a otras funciones
+
     // escribir la solución
 
     return true;
