@@ -1,19 +1,114 @@
-// MARPR13.cpp : Este archivo contiene la función "main". La ejecución del programa comienza y termina ahí.
-//
+
+/*@ <authors>
+ *
+ * Nombre, apellidos y usuario del juez (MARPXX) de los autores de la solución.
+ *
+ *@ </authors> */
 
 #include <iostream>
+#include <fstream>
+#include <vector>
+using namespace std;
 
-int main()
+#include "Matriz.h"  // propios o los de las estructuras de datos de clase
+
+
+const int INF = 100000000;
+const pair<int, int> pairINF = { INF,INF };
+/*@ <answer>
+
+ Escribe aquí un comentario general sobre la solución, explicando cómo
+ se resuelve el problema y cuál es el coste de la solución, en función
+ del tamaño del problema.
+
+ @ </answer> */
+
+
+ // ================================================================
+ // Escribe el código completo de tu solución aquí debajo
+ // ================================================================
+ //@ <answer>
+pair<int, int >rec(Matriz<pair<int, int>>&C, const vector<int>&potencias, const vector<int>&coste, const int& pMin, const int& pMax, int i,int p)
 {
-    std::cout << "Hello World!\n";
+    if (i >= coste.size() || p > pMax)
+    {
+        return { 100000000 +1, 100000000 +1};
+    }
+    else if (p >= pMin && p <= pMax)
+    {
+        return { 0,0 };
+    }
+    else if (C[i][p] != pairINF)
+    {
+        return C[i][p];
+    }
+    else
+    {
+        int aux = min((pMax - p)/potencias[i] , (pMin - p) + 1/ potencias[i] );
+        pair<int, int>parAux = { INF,INF };
+        for (int k = 0; k < aux; k++)
+        {  
+            pair<int, int>parAux2 = rec(C,potencias,coste,pMin,pMax,i,p+potencias[i]*(k+1));
+            parAux2.first += coste[i]*(k+1);
+            parAux2.second += potencias[i]*(k+1);
+
+            pair<int, int>parAux3 = rec(C, potencias, coste, pMin, pMax, i+1, p + potencias[i]*k);
+            parAux3.first += coste[i] * (k);
+            parAux3.second += potencias[i] * (k);
+
+            parAux = min(parAux, parAux2);
+            parAux = min(parAux, parAux3);
+        }
+        C[i][p] = parAux;
+        return C[i][p];
+        
+    }
+}
+bool resuelveCaso() {
+
+    // leer los datos de la entrada
+    int N, pMax, pMin;
+    cin >> N >> pMax >> pMin;
+    if (!std::cin)  // fin de la entrada
+        return false;
+
+    vector<int> coste(N,0);
+    vector<int> potencias(N,0);
+
+    for (int i = 0; i < N; i++)
+        cin >> potencias[i];
+
+    for (int i = 0; i < N; i++)
+        cin >> coste[i];
+    pair<int, int > aux;
+    Matriz<pair<int, int>>C(N + 1, pMax + 1,pairINF);
+    aux = rec(C, potencias, coste, pMin, pMax, 0,0);
+    if (aux.first < INF)
+        cout << aux.first << " " << aux.second << "\n";
+    else
+        cout << "IMPOSIBLE\n";
+    // resolver el caso posiblemente llamando a otras funciones
+
+    // escribir la solución
+
+    return true;
 }
 
-// Ejecutar programa: Ctrl + F5 o menú Depurar > Iniciar sin depurar
-// Depurar programa: F5 o menú Depurar > Iniciar depuración
+//@ </answer>
+//  Lo que se escriba dejado de esta línea ya no forma parte de la solución.
 
-// Sugerencias para primeros pasos: 1. Use la ventana del Explorador de soluciones para agregar y administrar archivos
-//   2. Use la ventana de Team Explorer para conectar con el control de código fuente
-//   3. Use la ventana de salida para ver la salida de compilación y otros mensajes
-//   4. Use la ventana Lista de errores para ver los errores
-//   5. Vaya a Proyecto > Agregar nuevo elemento para crear nuevos archivos de código, o a Proyecto > Agregar elemento existente para agregar archivos de código existentes al proyecto
-//   6. En el futuro, para volver a abrir este proyecto, vaya a Archivo > Abrir > Proyecto y seleccione el archivo .sln
+int main() {
+    // ajustes para que cin extraiga directamente de un fichero
+#ifndef DOMJUDGE
+    std::ifstream in("casos.txt");
+    auto cinbuf = std::cin.rdbuf(in.rdbuf());
+#endif
+
+    while (resuelveCaso());
+
+    // para dejar todo como estaba al principio
+#ifndef DOMJUDGE
+    std::cin.rdbuf(cinbuf);
+#endif
+    return 0;
+}
