@@ -28,23 +28,22 @@ const pair<int, int> pairINF = { INF,INF };
  // Escribe el código completo de tu solución aquí debajo
  // ================================================================
  //@ <answer>
-pair<int, int >rec(Matriz<pair<int, int>>&C, const vector<int>&potencias, const vector<int>&coste, const int& pMin, const int& pMax, int i,int p)
+pair<int, int>rec(Matriz<pair<int, int>>&C, const vector<int>&potencias, const vector<int>&coste, const int& pMin, const int& pMax, int i,int p)
 {
     if (i >= coste.size() || p > pMax)
-    {
-        return { 100000000 +1, 100000000 +1};
-    }
-    else if (p >= pMin && p <= pMax)
-    {
-        return { 0,0 };
-    }
-    else if (C[i][p] != pairINF)
-    {
+        return { 100000001 ,100000001};   
+    else if (p >= pMin && p <= pMax)   
+        return { 0,0 };   
+    else if (C[i][p] != pairINF)  
         return C[i][p];
-    }
     else
     {
-        int aux = min((pMax - p)/potencias[i] , (pMin - p) + 1/ potencias[i] );
+        int aux;
+        if ((pMin - p) % potencias[i] == 0)
+            aux = (pMin - p) / potencias[i];
+        else
+            aux = (pMin - p) + 1 / potencias[i];
+  
         pair<int, int>parAux = { INF,INF };
         for (int k = 0; k < aux; k++)
         {  
@@ -60,9 +59,32 @@ pair<int, int >rec(Matriz<pair<int, int>>&C, const vector<int>&potencias, const 
             parAux = min(parAux, parAux3);
         }
         C[i][p] = parAux;
-        return C[i][p];
-        
+        return C[i][p];       
     }
+}
+pair<int, int> ascendente(const vector<int>& precio, const vector<int>& potencia,const int& maxP, const int& minP)
+{
+    vector<int>p(maxP + 1, INF);
+    p[0] = 0;
+    int n =potencia.size();
+    for (int i = 1; i <= n; i++)
+    {
+        for (int j = potencia[i - 1]; j <= maxP; j++)
+        {
+            p[j] = min(p[j],p[j-potencia[i-1]]+precio[i-1]);
+        }
+    }
+    int valor = INF;
+    int pot = INF;
+    for (int i = minP; i <= maxP; i++)
+    {
+        if (valor > p[i])
+        {
+            valor = p[i];
+            pot = i;
+        }
+    }
+    return { valor,pot };
 }
 bool resuelveCaso() {
 
@@ -80,9 +102,9 @@ bool resuelveCaso() {
 
     for (int i = 0; i < N; i++)
         cin >> coste[i];
+
     pair<int, int > aux;
-    Matriz<pair<int, int>>C(N + 1, pMax + 1,pairINF);
-    aux = rec(C, potencias, coste, pMin, pMax, 0,0);
+    aux = ascendente(coste,potencias,pMax,pMin);
     if (aux.first < INF)
         cout << aux.first << " " << aux.second << "\n";
     else
